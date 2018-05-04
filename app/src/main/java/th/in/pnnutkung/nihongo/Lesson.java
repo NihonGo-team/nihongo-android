@@ -1,15 +1,15 @@
 package th.in.pnnutkung.nihongo;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Lesson {
     private int unit;
-    private Map<String, Word> word;
+    private HashMap<String, Word> word;
 
     public Lesson() {
     }
 
-    public Lesson(int unit, Map<String, Word> word) {
+    public Lesson(int unit, HashMap<String, Word> word) {
         this.unit = unit;
         this.word = word;
     }
@@ -22,11 +22,11 @@ public class Lesson {
         this.unit = unit;
     }
 
-    public Map<String, Word> getWord() {
+    public HashMap<String, Word> getWord() {
         return word;
     }
 
-    public void setWord(Map<String, Word> word) {
+    public void setWord(HashMap<String, Word> word) {
         this.word = word;
     }
 }

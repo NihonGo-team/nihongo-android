@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,9 +52,18 @@ public class UnitSelectionActivity extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull UnitSelectionRecyclerViewHolder holder, int position, @NonNull Lesson model) {
-                Log.wtf("]unit[", String.format("%d", model.getUnit()));
+            protected void onBindViewHolder(@NonNull UnitSelectionRecyclerViewHolder holder, int position, @NonNull final Lesson model) {
                 holder.setUnitNumber(model.getUnit());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(UnitSelectionActivity.this, VocabularyActivity.class);
+                        Bundle words = new Bundle();
+                        words.putSerializable("words", model.getWord());
+                        intent.putExtras(words);
+                        startActivity(intent);
+                    }
+                });
             }
         };
 

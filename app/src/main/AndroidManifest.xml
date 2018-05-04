@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <provider
-            android:authorities="th.in.pnnutkung.nihongo.ApplicationContentProvider"
             android:name=".ApplicationContentProvider"
+            android:authorities="th.in.pnnutkung.nihongo.ApplicationContentProvider"
             android:exported="false" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +44,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".UnitSelectionActivity"></activity>
+        <activity android:name=".UnitSelectionActivity" />
+        <activity android:name=".VocabularyActivity"></activity>
     </application>
 
 </manifest>

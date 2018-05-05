@@ -38,6 +38,12 @@ public class VocabularyAdapter extends RecyclerView.Adapter<VocabularyAdapter.Vi
             @Override
             public void onClick(View v) {
                 activity.getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.from_right,
+                                R.anim.to_left,
+                                R.anim.from_left,
+                                R.anim.to_right
+                        )
                         .replace(R.id.vocabulary_content_container,
                                 WordDescFragment.newInstance(mDataset[position]))
                         .addToBackStack(null)

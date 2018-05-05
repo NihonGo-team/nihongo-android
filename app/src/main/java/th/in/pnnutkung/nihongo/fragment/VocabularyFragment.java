@@ -13,13 +13,14 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import th.in.pnnutkung.nihongo.R;
+import th.in.pnnutkung.nihongo.VocabularyActivity;
 import th.in.pnnutkung.nihongo.Word;
 
 public class VocabularyFragment extends Fragment {
 
     Word[] words;
 
-    public static VocabularyFragment newInstance(List<Word> words) {
+    public static Fragment newInstance(List<Word> words) {
         VocabularyFragment fragment = new VocabularyFragment();
         Bundle args = new Bundle();
         args.putParcelableArray("words", words.toArray(new Word[words.size()]));
@@ -50,7 +51,7 @@ public class VocabularyFragment extends Fragment {
                 LinearLayoutManager.VERTICAL,
                 false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        VocabularyAdapter mAdapter = new VocabularyAdapter(this.words);
+        VocabularyAdapter mAdapter = new VocabularyAdapter(this.words, (VocabularyActivity) getActivity());
         mRecyclerView.setAdapter(mAdapter);
     }
 }

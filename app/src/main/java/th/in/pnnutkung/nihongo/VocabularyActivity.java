@@ -21,7 +21,8 @@ public class VocabularyActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.vocabulary_content_container,
-                            VocabularyFragment.newInstance(wordList)
+                            VocabularyFragment.newInstance(wordList),
+                            "WordsFragment"
                     )
                     .commit();
         }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".UnitSelectionActivity">
     <TextView
         android:text="Units"
@@ -13,7 +13,8 @@
         android:textStyle="bold"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="8dp"/>
     <android.support.v7.widget.RecyclerView
         android:layout_weight="2"
         android:id="@+id/recycler_lesson"

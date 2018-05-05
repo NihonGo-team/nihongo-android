@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="th.in.pnnutkung.nihongo.MainActivity">
-
+    <ImageView
+        android:src="@drawable/nihongo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <com.facebook.login.widget.LoginButton
         android:id="@+id/btn_facebook_login"
         android:layout_alignParentBottom="true"

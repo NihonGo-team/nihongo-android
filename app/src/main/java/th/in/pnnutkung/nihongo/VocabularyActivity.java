@@ -16,12 +16,13 @@ public class VocabularyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
         Bundle bundle = getIntent().getExtras();
+        String title = String.format("Vocabulary unit %d", bundle.getInt("unitNumber"));
         HashMap<String, Word> wordHashMap = (HashMap<String, Word>) bundle.getSerializable("words");
         List<Word> wordList = new ArrayList<Word>(wordHashMap.values());
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.vocabulary_content_container,
-                            VocabularyFragment.newInstance(wordList),
+                            VocabularyFragment.newInstance(title, wordList),
                             "WordsFragment"
                     )
                     .commit();

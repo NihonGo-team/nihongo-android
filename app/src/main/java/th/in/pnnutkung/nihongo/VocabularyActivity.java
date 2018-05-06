@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import th.in.pnnutkung.nihongo.fragment.VocabularyFragment;
 
@@ -20,8 +18,7 @@ public class VocabularyActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String title = String.format("Vocabulary unit %d", bundle.getInt("unitNumber"));
         tvTitle.setText(title);
-        HashMap<String, Word> wordHashMap = (HashMap<String, Word>) bundle.getSerializable("words");
-        List<Word> wordList = new ArrayList<Word>(wordHashMap.values());
+        ArrayList<Word> wordList = bundle.getParcelableArrayList("words");
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.vocabulary_content_container,

@@ -45,8 +45,7 @@ public class UnitSelectionActivity extends AppCompatActivity {
         });
         Query query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("lesson")
-                .limitToLast(50);
+                .child("lesson");
 
         FirebaseRecyclerOptions<Lesson> options = new FirebaseRecyclerOptions.Builder<Lesson>()
                 .setQuery(query, Lesson.class)
@@ -70,7 +69,7 @@ public class UnitSelectionActivity extends AppCompatActivity {
                         Intent intent = new Intent(UnitSelectionActivity.this, VocabularyActivity.class);
                         Bundle words = new Bundle();
                         words.putInt("unitNumber", model.getUnit());
-                        words.putSerializable("words", model.getWord());
+                        words.putParcelableArrayList("words", model.getWord());
                         intent.putExtras(words);
                         startActivity(intent);
                     }

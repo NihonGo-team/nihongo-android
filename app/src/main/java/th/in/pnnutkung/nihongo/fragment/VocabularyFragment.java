@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import th.in.pnnutkung.nihongo.R;
 import th.in.pnnutkung.nihongo.VocabularyActivity;
@@ -19,12 +19,12 @@ import th.in.pnnutkung.nihongo.Word;
 
 public class VocabularyFragment extends Fragment {
 
-    Word[] words;
+    ArrayList<Word> words;
 
-    public static Fragment newInstance(List<Word> words) {
+    public static Fragment newInstance(ArrayList<Word> words) {
         VocabularyFragment fragment = new VocabularyFragment();
         Bundle args = new Bundle();
-        args.putParcelableArray("words", words.toArray(new Word[words.size()]));
+        args.putParcelableArrayList("words", words);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,7 +33,7 @@ public class VocabularyFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null){
-            this.words = (Word[]) getArguments().getParcelableArray("words");
+            this.words = getArguments().getParcelableArrayList("words");
         }
     }
 

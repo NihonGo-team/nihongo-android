@@ -1,15 +1,15 @@
 package th.in.pnnutkung.nihongo;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Lesson {
     private int unit;
-    private HashMap<String, Word> word;
+    private ArrayList<Word> word;
 
     public Lesson() {
     }
 
-    public Lesson(int unit, HashMap<String, Word> word) {
+    public Lesson(int unit, ArrayList<Word> word) {
         this.unit = unit;
         this.word = word;
     }
@@ -22,11 +22,11 @@ public class Lesson {
         this.unit = unit;
     }
 
-    public HashMap<String, Word> getWord() {
+    public ArrayList<Word> getWord() {
         return word;
     }
 
-    public void setWord(HashMap<String, Word> word) {
+    public void setWord(ArrayList<Word> word) {
         this.word = word;
     }
 }

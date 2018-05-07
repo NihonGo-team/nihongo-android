@@ -45,7 +45,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".UnitSelectionActivity" />
-        <activity android:name=".VocabularyActivity"></activity>
+        <activity android:name=".VocabularyActivity" />
+        <activity android:name=".QuizActivity"></activity>
     </application>
 
 </manifest>

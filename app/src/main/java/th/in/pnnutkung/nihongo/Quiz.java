@@ -5,18 +5,26 @@ import android.os.Parcelable;
 
 public class Quiz implements Parcelable {
     private String question;
+    private String correctAnswer;
     private String[] answers;
     private String selectedAnswer;
 
-    public Quiz(String question, String[] answers) {
+    public Quiz(String question, String[] answers, String correctAnswer) {
         this.question = question;
         this.answers = answers;
+        this.correctAnswer = correctAnswer;
+        this.selectedAnswer = "";
     }
 
     protected Quiz(Parcel in) {
         question = in.readString();
         answers = in.createStringArray();
         selectedAnswer = in.readString();
+        correctAnswer = in.readString();
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
     public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
@@ -43,10 +51,14 @@ public class Quiz implements Parcelable {
         return selectedAnswer;
     }
 
-    public void setSelectAnswer(String selectAnswer) {
-        if (this.selectedAnswer == null) {
+    public void setSelectedAnswer(String selectAnswer) {
+        if (this.selectedAnswer.equalsIgnoreCase("")) {
             this.selectedAnswer = selectAnswer;
         }
+    }
+
+    public boolean isCorrect () {
+        return this.correctAnswer.equalsIgnoreCase(this.getSelectedAnswer());
     }
 
     @Override
@@ -59,5 +71,6 @@ public class Quiz implements Parcelable {
         dest.writeString(question);
         dest.writeStringArray(answers);
         dest.writeString(selectedAnswer);
+        dest.writeString(correctAnswer);
     }
 }

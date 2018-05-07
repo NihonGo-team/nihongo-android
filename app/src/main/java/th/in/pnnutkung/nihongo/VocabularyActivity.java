@@ -66,7 +66,9 @@ public class VocabularyActivity extends AppCompatActivity {
         ArrayList<Quiz> quizzes = new ArrayList<Quiz>(10);
         quizzes.clear();
         for (Integer quizIndex : generated) {
-            quizzes.add(new Quiz(this.wordList.get(quizIndex).getJp(), generateAnswers(quizIndex)));
+            quizzes.add(new Quiz(this.wordList.get(quizIndex).getJp(),
+                    generateAnswers(quizIndex),
+                    this.wordList.get(quizIndex).getTh()));
         }
         Collections.shuffle(quizzes);
         return quizzes;

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,11 +47,15 @@ public class VocabularyActivity extends AppCompatActivity {
         goToTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<Quiz> quiz = generateQuiz();
-                Intent intent = new Intent(VocabularyActivity.this, QuizActivity.class);
-                intent.putExtra("unitNumber", unitNumber);
-                intent.putParcelableArrayListExtra("quiz", quiz);
-                startActivity(intent);
+                if (wordList.size() > 10) {
+                    ArrayList<Quiz> quiz = generateQuiz();
+                    Intent intent = new Intent(VocabularyActivity.this, QuizActivity.class);
+                    intent.putExtra("unitNumber", unitNumber);
+                    intent.putParcelableArrayListExtra("quiz", quiz);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(VocabularyActivity.this, "Quiz is not available now", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

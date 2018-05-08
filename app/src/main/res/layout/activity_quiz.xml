@@ -12,7 +12,7 @@
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/tv_quiz_score"
-        android:text="score:"
+        android:text="Score: 0/10"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -35,7 +35,8 @@
             android:layout_height="wrap_content"
             android:enabled="false" />
         <Button
-            android:text="refresh"
+            android:id="@+id/btn_close_quiz"
+            android:text="close"
             android:layout_width="wrap_content"
             android:layout_centerInParent="true"
             android:layout_height="wrap_content" />

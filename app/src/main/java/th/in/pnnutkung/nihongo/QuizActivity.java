@@ -13,6 +13,7 @@ import th.in.pnnutkung.nihongo.fragment.QuizFragment;
 
 public class QuizActivity extends AppCompatActivity {
 
+    private int score = 0;
     private ArrayList<Quiz> quiz;
     private int currentQuiz;
 
@@ -68,6 +69,13 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
         });
+        Button close = findViewById(R.id.btn_close_quiz);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public Quiz getCurrentQuiz(int index) {
@@ -76,9 +84,6 @@ public class QuizActivity extends AppCompatActivity {
 
     public void setSelectAnswer(int quizIndex, String answer) {
         this.quiz.get(quizIndex).setSelectedAnswer(answer);
-    }
-
-    private void setCurrentQuiz(final int quizIndex) {
     }
 
     private void addNextQuiz(int index) {
@@ -91,5 +96,15 @@ public class QuizActivity extends AppCompatActivity {
 
     private void removeThisQuiz() {
         getSupportFragmentManager().popBackStack();
+    }
+
+    public void addScore() {
+        this.score+=1;
+        updateScore();
+    }
+
+    private void updateScore() {
+        TextView score = findViewById(R.id.tv_quiz_score);
+        score.setText(String.format("Score: %d/10" ,this.score));
     }
 }

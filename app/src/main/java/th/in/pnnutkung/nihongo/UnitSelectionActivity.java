@@ -57,6 +57,8 @@ public class UnitSelectionActivity extends AppCompatActivity {
             @Override
             public UnitSelectionRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.unit_selection_view_holder, parent, false);
+                int height = parent.getMeasuredHeight() / 4;
+                view.setMinimumHeight(height);
                 return new UnitSelectionRecyclerViewHolder(view);
             }
 
@@ -80,6 +82,7 @@ public class UnitSelectionActivity extends AppCompatActivity {
         RecyclerView mRecyclerView = findViewById(R.id.recycler_lesson);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this, 3);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(3, 8, true, 0));
         mRecyclerView.setAdapter(adapter);
     }
 

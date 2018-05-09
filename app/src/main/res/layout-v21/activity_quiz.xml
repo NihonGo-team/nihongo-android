@@ -21,7 +21,7 @@
         android:id="@+id/quiz_content_container"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="match_parent" />
     <RelativeLayout
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            android:background="#d32f2f"
+            android:backgroundTint="#d32f2f"
             android:enabled="false" />
         <Button
             android:id="@+id/btn_close_quiz"
@@ -51,6 +51,6 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:theme="@style/AppTheme"
-            android:background="#d32f2f" />
+            android:backgroundTint="#d32f2f" />
     </RelativeLayout>
 </LinearLayout>

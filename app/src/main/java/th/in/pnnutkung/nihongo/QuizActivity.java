@@ -2,6 +2,7 @@ package th.in.pnnutkung.nihongo;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,9 @@ public class QuizActivity extends AppCompatActivity {
     private int score = 0;
     private ArrayList<Quiz> quiz;
     private int currentQuiz;
+    private TextView quizTitle;
+    private TextView tvScore;
+    private TextView tvQuizNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +34,31 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putInt("score", this.score);
+        outState.putInt("currentQuiz", this.currentQuiz);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        this.score = savedInstanceState.getInt("score");
+        this.currentQuiz = savedInstanceState.getInt("currentQuiz");
+        tvScore.setText(String.format("Score: %d/10" ,this.score));
+        tvQuizNo.setText(String.format("Quiz %d/10", this.currentQuiz+1));
+    }
+
     @SuppressLint("DefaultLocale")
     private void initInstance() {
+        tvScore = findViewById(R.id.tv_quiz_score);
         quiz = getIntent().getParcelableArrayListExtra("quiz");
         this.currentQuiz = 0;
         int unitNumber = getIntent().getIntExtra("unitNumber", 0);
-        TextView quizTitle = findViewById(R.id.tv_quiz_title);
+        quizTitle = findViewById(R.id.tv_quiz_title);
+        tvQuizNo = findViewById(R.id.tv_quiz_no);
+        tvQuizNo.setText(String.format("Quiz %d/10", this.currentQuiz+1));
         quizTitle.setText(String.format("Unit %d quiz", unitNumber));
         final Button next = findViewById(R.id.btn_next_quiz);
         final Button prev = findViewById(R.id.btn_prev_quiz);
@@ -46,6 +69,7 @@ public class QuizActivity extends AppCompatActivity {
                     prev.setEnabled(true);
                     currentQuiz+=1;
                     addNextQuiz(currentQuiz);
+                    updateQuizNo();
                     if (currentQuiz+1 == quiz.size()) {
                         next.setEnabled(false);
                     }
@@ -61,6 +85,7 @@ public class QuizActivity extends AppCompatActivity {
                     next.setEnabled(true);
                     currentQuiz-=1;
                     removeThisQuiz();
+                    updateQuizNo();
                     if (currentQuiz == 0) {
                         prev.setEnabled(false);
                     }
@@ -104,7 +129,10 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateScore() {
-        TextView score = findViewById(R.id.tv_quiz_score);
-        score.setText(String.format("Score: %d/10" ,this.score));
+        tvScore.setText(String.format("Score: %d/10" ,this.score));
+    }
+
+    private void updateQuizNo() {
+        tvQuizNo.setText(String.format("Quiz %d/10", this.currentQuiz+1));
     }
 }

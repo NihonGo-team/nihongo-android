@@ -22,7 +22,7 @@
     <Button
         android:layout_margin="16dp"
         android:id="@+id/btn_go_to_test"
-        android:text="Go to test"
+        android:text="Take a quiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"

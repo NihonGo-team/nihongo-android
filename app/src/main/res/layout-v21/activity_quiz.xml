@@ -47,8 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#d32f2f"
-            android:enabled="false" />
+            android:backgroundTint="#d32f2f" />
         <Button
             android:id="@+id/btn_close_quiz"
             android:text="close"

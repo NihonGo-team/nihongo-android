@@ -2,7 +2,6 @@ package th.in.pnnutkung.nihongo;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +19,8 @@ public class QuizActivity extends AppCompatActivity {
     private TextView quizTitle;
     private TextView tvScore;
     private TextView tvQuizNo;
+    private Button next;
+    private Button prev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +36,23 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
         outState.putInt("score", this.score);
         outState.putInt("currentQuiz", this.currentQuiz);
     }
 
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState);
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
         this.score = savedInstanceState.getInt("score");
         this.currentQuiz = savedInstanceState.getInt("currentQuiz");
+        if (this.currentQuiz == 0) {
+            prev.setEnabled(false);
+        }
+        if (this.currentQuiz == 9) {
+            next.setEnabled(false);
+        }
         tvScore.setText(String.format("Score: %d/10" ,this.score));
         tvQuizNo.setText(String.format("Quiz %d/10", this.currentQuiz+1));
     }
@@ -60,8 +67,8 @@ public class QuizActivity extends AppCompatActivity {
         tvQuizNo = findViewById(R.id.tv_quiz_no);
         tvQuizNo.setText(String.format("Quiz %d/10", this.currentQuiz+1));
         quizTitle.setText(String.format("Unit %d quiz", unitNumber));
-        final Button next = findViewById(R.id.btn_next_quiz);
-        final Button prev = findViewById(R.id.btn_prev_quiz);
+        next = findViewById(R.id.btn_next_quiz);
+        prev = findViewById(R.id.btn_prev_quiz);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
